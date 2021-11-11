@@ -1,5 +1,7 @@
 # The ultimate quizz of MIAR
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ad392574-9f66-4994-b1ae-1078da252091/deploy-status)](https://app.netlify.com/sites/ultimate-miar-quizz/deploys)
+
 ## 🚀 Tech stack
 
 <p align="center">
