@@ -1,0 +1,138 @@
+:root {
+  --c-main: #222;
+  --c-accent: #F78812;
+}
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--c-main);
+  color: var(--c-accent);
+  width: 100%;
+  height: 100%;
+}
+body {
+  display: grid;
+}
+main {
+  display: flex;
+  flex-direction: column;
+}
+h1 {
+  text-align: center;
+  flex: 0;
+}
+section {
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+.btn {
+  appearance: none;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+  margin: 0.5em 1em;
+  padding: 0.5em 1em;
+  background: var(--c-accent);
+  font-size: 2em;
+  border-radius: 35px 5px 35px 5px;
+}
+
+.btn:hover {
+  transform: scale3d(1.05,1.05,1);
+}
+.btn:active {
+  transform: scale3d(0.97,0.97,1);
+}
+
+#live {
+  position: absolute;
+  display: flex;
+  padding: 15px;
+  font-size: 2em;
+  flex-direction: row-reverse;
+}
+
+#live .heart {
+  transition: all ease-in-out 1.5s;
+}
+
+#live .heart[lost=""] {
+  transform: translate3d(0,50px,0);
+  opacity: 0;
+}
+
+.overlay {
+  display: none;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: absolute;
+  inset: 0;
+  background: #000c;
+  opacity: 0;
+  transition: opacity ease-in-out 1.5s;
+  text-align: center;
+}
+
+
+
+.overlay[show=""] {
+  display: flex !important;
+  animation: 1.5s show forwards;
+  opacity: 0;
+}
+
+@keyframes show {
+  100% {
+    opacity: 1;
+  }
+}
+
+#lose h2, #win h2 {
+  font-size: 2em;
+}
+
+/*🍪*/
+#win a {
+  display: block;
+  text-decoration: none;
+  font-size: 10em;
+  animation: 2s rotate infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.shield {
+  font-size: 7em;
+  user-select: none;
+  transition: all cubic-bezier(0,5,.39,5) 0.05s;
+}
+.shield:active {
+  filter: brightness(0.5);
+}
+
+
+.swapEmoji {
+  position: relative;
+  overflow: hidden;
+}
+
+/*The first element is the title of the question*/
+.swapEmoji:nth-child(3):hover:after {
+  display: grid;
+  place-items: center;
+  content: "⭐";
+  text-align: center;
+  position: absolute;
+  inset: 0;
+  background: inherit;
+
+}
