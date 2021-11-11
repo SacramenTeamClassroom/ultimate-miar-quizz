@@ -15,10 +15,10 @@ export class Overlay {
      */
     render() {
     }
-    hide() {
+    show() {
         this.dom.setAttribute("show","");
     }
-    show() {
+    hide() {
         this.dom.removeAttribute("show");
     }
 }
