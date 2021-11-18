@@ -26,6 +26,7 @@ export function question2():HTMLElement[] {
     shield.onclick = () => {
         hp--;
         if (hp<0) {
+            shield.onclick = ()=>{};
             correct();
             clearTimeout(timeout);
             clearInterval(regen);
