@@ -33,7 +33,7 @@ export function resetState() {
 }
 
 function saveOnExit() {
-    window.addEventListener("beforeunload", e => {
+    window.addEventListener("beforeunload", () => {
         localStorage.setItem("state", JSON.stringify(state));
     });
 }
