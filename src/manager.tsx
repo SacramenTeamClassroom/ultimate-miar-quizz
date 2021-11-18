@@ -1,26 +1,21 @@
 import { divLive, lose, sectionQuizz, win } from "./dom";
-import { player, maxLive, playerReset } from "./store/player";
 import { start } from "./quizz/start";
 import { question0 } from "./quizz/0";
 import { question1 } from "./quizz/1";
 import { question2 } from "./quizz/2";
 import { question3 } from "./quizz/3";
 import { h } from "tsx-dom";
+import { maxLive, resetState, state } from "./store/state";
 
 /**
  * A quizz screen is just a function that return an array of HTMLElement
  */
-export type QuizzScreen = () => HTMLElement[]
-
-/**
- * The index of the current quizz screen in the quizzScreens array below
- */
-var current = 0;
+export type QuizzScreen = () => HTMLElement[];
 
 /**
  * The array of quizz screen in order
  */
-const quizzScreens:QuizzScreen[] = [
+ const quizzScreens:QuizzScreen[] = [
     start,
     question0,
     question1,
@@ -28,12 +23,14 @@ const quizzScreens:QuizzScreen[] = [
     question3
 ]
 
+var { player } = state;
+
 /**
  * Clear the current quizz screen and append the new one
  */
 export function drawCurrent() {
     sectionQuizz.innerHTML = "";
-    quizzScreens[current]().forEach(d=>sectionQuizz.appendChild(d));
+    quizzScreens[state.current]().forEach(d=>sectionQuizz.appendChild(d));
 }
 
 /**
@@ -44,10 +41,14 @@ export function drawCurrent() {
  * and draw live
  */
 export function init() {
-    current = 0;
-    playerReset();
     drawCurrent();
     drawLive();
+    loseLive(0);
+}
+
+export function reset() {
+    resetState();
+    init();
 }
 
 /**
@@ -55,8 +56,8 @@ export function init() {
  * Or show the win overlay
  */
 export function next() {
-    current++;
-    if (current<quizzScreens.length) return drawCurrent();
+    state.current++;
+    if (state.current<quizzScreens.length) return drawCurrent();
     win.show();
 
 }

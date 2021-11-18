@@ -1,5 +1,5 @@
 import { h } from "tsx-dom";
-import { init } from "../manager";
+import { reset } from "../manager";
 import { Overlay } from "./overlay";
 
 
@@ -13,7 +13,7 @@ export class LoseOverlay extends Overlay {
         btn.onclick = this.onClick.bind(this);
     }
     onClick() {
-        init();
+        reset();
         this.hide();
     }
 }
